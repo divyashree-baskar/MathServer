@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamp Filament Power Calculator</title>
+</head>
+<body>
+    <h1>Calculate Lamp Filament Power</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="intensity">Intensity (Amps):</label>
+        <input type="number" step="any" name="intensity" id="intensity" required><br><br>
+
+        <label for="resistance">Resistance (Ohms):</label>
+        <input type="number" step="any" name="resistance" id="resistance" required><br><br>
+
+        <button type="submit">Calculate Power</button>
+    </form>
+
+    {% if power is not None %}
+        <h2>Result</h2>
+        <p>Intensity (I): {{ intensity }} Amps</p>
+        <p>Resistance (R): {{ resistance }} Ohms</p>
+        <p><strong>Power (P): {{ power }} Watts</strong></p>
+    {% endif %}
+</body>
+</html>
